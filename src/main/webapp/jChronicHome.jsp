@@ -37,7 +37,7 @@
         color: black;
     }
     .button {
-        background-color: #f44336;
+        background-color: green;
         border: none;
         color: white;
         padding: 15px 32px;
@@ -48,7 +48,18 @@
         margin: 4px 2px;
         cursor: pointer;
     }
-
+    .button2 {
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 10px 28px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
 </style>
 <form:form method="POST" action="${pageContext.request.contextPath}/addRow" modelAttribute = "dataParser" class = "w3-container">
 
@@ -70,12 +81,18 @@
     <tr>
         <th>Action</th>
         <th>Date</th>
+
+
     </tr>
 
     <c:forEach items="${tableRows}" var="tableRows">
     <tr>
         <td>${tableRows.action}</td>
         <td>${tableRows.date}</td>
+        <form:form method="DELETE" action="${pageContext.request.contextPath}/deleteRow" modelAttribute = "dataParser" class = "w3-container">
+            <td>    <input class="button2" type="submit" value="Delete" />
+            </td>
+        </form:form>
     </tr>
     </c:forEach>
 </table>

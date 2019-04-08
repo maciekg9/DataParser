@@ -20,7 +20,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
 
-//    boolean enabled = true;
     boolean accountNonExpired = true;
     boolean credentialsNonExpired = true;
     boolean accountNonLocked = true;

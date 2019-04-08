@@ -2,9 +2,10 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
   xmlns:th="http://www.thymeleaf.org"> 
 	<head>
-		<title>Registration Success</title>
+		<title>Something went wrong</title>
 	</head>
 	<body>
+	error.location = "localhost:8080/app";
 		<center>
 			<span th:text="${message}"></span>
 		</center>

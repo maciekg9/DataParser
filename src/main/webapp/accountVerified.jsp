@@ -7,5 +7,6 @@
 		<center>
 			<h3>Congratulations! Your account has been activated and email is verified!</h3>
 		</center>
+		<div class="text-center"> <a href="localhost:8080">Go back to login page</a></div>
 	</body>
 </html>

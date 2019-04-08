@@ -1,13 +1,10 @@
 package com.app.authentication.controller;
 
-//import com.app.authentication.model.Employee;
 import com.app.authentication.model.User;
 import com.app.authentication.model.ConfirmationToken;
 import com.app.authentication.repository.ConfirmationTokenRepository;
-//import com.app.authentication.repository.EmployeeRepository;
 import com.app.authentication.repository.UserRepository;
 import com.app.authentication.service.EmailSenderService;
-//import com.app.authentication.service.EmployeeService;
 import com.app.authentication.service.SecurityService;
 import com.app.authentication.service.UserService;
 import com.app.authentication.validator.UserValidator;
@@ -19,12 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -32,8 +27,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private EmployeeService employeeService;
+
 
     @Autowired
     private SecurityService securityService;
@@ -50,8 +44,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private EmployeeRepository employeeRepository;
 
     final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -88,7 +80,7 @@ public class UserController {
                 +"http://localhost:8080/confirm-account?token="+confirmationToken.getConfirmationToken());
 
         emailSenderService.sendEmail(mailMessage);
-//        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
+        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
         modelAndView.addObject("emailId", userForm.getEmail());
 
@@ -127,65 +119,12 @@ public class UserController {
 
         return "login";
     }
-//
-//    @GetMapping("/welcome")
-//    public String welcome(Model model) {
-//        return "welcome";
-//    }
-
-//    @RequestMapping(value = "/toDo", method = RequestMethod.GET)
-//    public ModelAndView emp(ModelMap model) {
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        Employee employeeForm = new Employee();
-//        employeeRepository.findAll();
-//        model.addAttribute("employees", employeeRepository.findAll());
-//
-//        modelAndView.addObject("employeeForm", employeeForm);
-//
-//        return new ModelAndView("jChronicHome", "employee", new Employee());
-//    }
-//
-//    @RequestMapping(value = "/addRow", method = RequestMethod.POST)
-//    public ModelAndView submit2(@Valid @ModelAttribute("employee") Employee employee,
-//                                @ModelAttribute("employeeForm") Employee employeeForm,
-//                         BindingResult result, ModelMap model, ModelAndView modelAndView) {
-//        if (result.hasErrors()) {
-//            model.addAttribute("message", "Bad data input");
-//            modelAndView.setViewName("toDo");
-//        }
-//        employeeService.saveData(employeeForm);
-//
-//
-//        return new ModelAndView("redirect:/toDo");
-//    }
 
     @GetMapping("/")
     public String asd(Model model) {
         return "login";
     }
 
-
-
-
-//    @RequestMapping(value = "/employee", method = RequestMethod.GET)
-//    public ModelAndView showForm() {
-//        return new ModelAndView("employeeHome", "employee", new Employee());
-//    }
-//
-//    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-//    public String submit(@Valid @ModelAttribute("employee") Employee employee,
-//                         BindingResult result, ModelMap model) {
-//        if (result.hasErrors()) {
-//            return "error";
-//        }
-//        Span span = Chronic.parse(employee.getDate());
-//        model.addAttribute("date", span);
-////        model.addAttribute("date", employee.getDate());
-//        model.addAttribute("id", employee.getId());
-//
-//        return "employeeView";
-//    }
 
 
 
