@@ -1,6 +1,7 @@
 package com.app.authentication.model;
 
 import com.app.core.model.DataParser;
+import com.app.core.model.Event;
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -44,6 +45,16 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<DataParser> dataParsers;
 
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Event> events;
 
     @Override
     public Collection<Role> getAuthorities() {

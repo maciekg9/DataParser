@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -26,15 +27,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/resources/**", "/registration", "/", "/confirm-account").permitAll()
+                .antMatchers("/resources/**", "/registration", "/", "/confirm-account", "/addRow").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/app", true)
+                .defaultSuccessUrl("/calendar", true)
                 .permitAll()
                 .and()
                 .logout()
+                .logoutSuccessUrl("/login")
                 .permitAll();
     }
 

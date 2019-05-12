@@ -5,7 +5,6 @@
 		<title>Something went wrong</title>
 	</head>
 	<body>
-	error.location = "localhost:8080/app";
 		<center>
 			<span th:text="${message}"></span>
 		</center>
